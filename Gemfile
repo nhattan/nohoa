@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
@@ -36,8 +36,17 @@ group :development, :test do
   gem 'pry'
 end
 
+gem 'devise', '3.0.0'
 
+gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
+gem 'less-rails'
 
+gem 'omniauth-facebook'
+
+gem "rails_config"
+gem 'ransack'
+gem 'kaminari'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

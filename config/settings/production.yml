@@ -1,0 +1,5 @@
+facebook:
+  key: "790806177616431"
+  secret: "f775bc38f955bfc001427eaa1f9d36dd"
+resources:
+  per_page: 25
