@@ -47,6 +47,7 @@ gem 'omniauth-facebook'
 gem "rails_config"
 gem 'ransack'
 gem 'kaminari'
+gem 'cancancan'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

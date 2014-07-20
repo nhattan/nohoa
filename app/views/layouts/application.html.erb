@@ -23,7 +23,7 @@
         <div class="nav-collapse">
           <ul class="nav">
  			<% if current_user %>
-		      <li><%= link_to "Sign out", destroy_user_session_path, id: "sign_out", method: :delete %></li>
+		      <li><%= link_to "Sign out", logout_path, id: "sign_out" %></li>
 		    <% else %>
 		     <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
 		    <% end %>
