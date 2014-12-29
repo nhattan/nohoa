@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mood::Application.load_tasks
+Pweb::Application.load_tasks
