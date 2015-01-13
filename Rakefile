@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Pweb::Application.load_tasks
+Flower::Application.load_tasks

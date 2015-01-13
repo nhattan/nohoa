@@ -1,20 +1,24 @@
-Pweb::Application.routes.draw do
+Flower::Application.routes.draw do
+  devise_for :users
 
-  # devise_for :users
-
-  # devise_scope :user do
-  #   get '/login' => 'devise/sessions#new', :as => :login
-  #   post '/login' => 'devise/sessions#create', :as => :create_new_session
-  #   get '/logout' => 'devise/sessions#destroy', :as => :logout
-  #   get '/signup' => 'devise/registrations#new', :as => :signup
-  #   post '/signup' => 'devise/registrations#create', :as => :registration
-  #   get '/password/recover' => 'devise/passwords#new', :as => :recover_password
-  #   post '/password/recover' => 'devise/passwords#create', :as => :reset_password
-  #   get '/password/change' => 'devise/passwords#edit', :as => :edit_password
-  #   put '/password/change' => 'devise/passwords#update', :as => :update_password
-  # end
+  devise_scope :user do
+    get '/login' => 'devise/sessions#new', :as => :login
+    post '/login' => 'devise/sessions#create', :as => :create_new_session
+    get '/logout' => 'devise/sessions#destroy', :as => :logout
+    get '/signup' => 'devise/registrations#new', :as => :signup
+    post '/signup' => 'devise/registrations#create', :as => :registration
+    get '/password/recover' => 'devise/passwords#new', :as => :recover_password
+    post '/password/recover' => 'devise/passwords#create', :as => :reset_password
+    get '/password/change' => 'devise/passwords#edit', :as => :edit_password
+    put '/password/change' => 'devise/passwords#update', :as => :update_password
+  end
 
   root "homes#index"
+
+  namespace :admin do
+    root "users#index"
+    resources :users
+  end
 
   # resources :users
   # get 'auth/:provider/callback', to: 'facebook_auths#create'

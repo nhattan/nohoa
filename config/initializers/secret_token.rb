@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Pweb::Application.config.secret_key_base = 'dbdcb268be493b64e32721f136473018c289d2b8a2ee8a380798e9bf5ba915c4044e835b7900a366d7c39ca837a4e1cdac578409f410e495b803b05c2749a70a'
+Flower::Application.config.secret_key_base = 'dbdcb268be493b64e32721f136473018c289d2b8a2ee8a380798e9bf5ba915c4044e835b7900a366d7c39ca837a4e1cdac578409f410e495b803b05c2749a70a'
