@@ -10,3 +10,11 @@ puts "Create roles"
 %w(admin user).each do |role|
   Role.create(name: role)
 end
+
+puts "Create users"
+admin = User.create(email: "admin@example.com", password: "12345678")
+admin.roles << Role.first
+100.times do |i|
+  user = User.create(email: "user_#{i}@example.com", password: "12345678")
+  user.roles << Role.last	
+end

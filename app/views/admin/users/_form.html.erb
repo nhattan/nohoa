@@ -1,0 +1,38 @@
+<%= form_for [:admin, @resource] do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="fields">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+
+	<div class="fields">
+		<%= f.label :password %>
+		<%= f.password_field :password %>
+	</div>
+
+	<div class="fields">
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+
+	<div class="fields">
+		<%= f.label :role %>
+		<%= f.fields_for :user_roles, @resource.build_user_roles do |ff| %>
+			<%= ff.collection_select :role_id, Role.all, :id, :name, include_blank: true %>
+			<%= ff.hidden_field :id, value: ff.object.id %>
+		<% end %>
+	</div>
+
+	<div class="fields">
+		<%= f.submit (@resource.new_record? ? :Create : :Update), class: "btn btn-warning" %>
+	</div>
+<% end %>

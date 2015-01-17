@@ -1,1 +1,43 @@
-INDEX
+<%= render "search_form" %>
+
+<div class="panel panel-success">
+  <div class="panel-heading alert overflow-hidden">
+  	<span class="label label-warning">
+      <%= @users.total_count %> <%= I18n.t("views.admin.users.user") %>
+    </span>
+  	
+  	<%= link_to I18n.t("views.buttons.new"), new_admin_user_path, class: "btn btn-success right" %>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+  	<thead>
+  		<tr>
+  			<th><%= User.human_attribute_name :id %></th>
+  			<th><%= User.human_attribute_name :email %></th>
+  			<th><%= User.human_attribute_name :register_at %></th>
+  			<th><%= User.human_attribute_name :roles %></th>
+  			<th></th>
+  		</tr>
+  	</thead>
+
+    <% @users.each do |user| %>
+			<tr>
+				<th><%= link_to user.id, admin_user_path(user) %></th>
+				<th><%= link_to user.email, admin_user_path(user) %></th>
+				<th><%= user.created_at %></th>
+				<th>
+					<% user.roles.each do |role| %>
+					  <span class="label label-warning"><%= role.name %></span>
+					<% end %>
+				</th>
+				<th>
+					<%= link_to I18n.t("views.buttons.edit"), edit_admin_user_path(user), class: "btn btn-primary" %>
+					<%= link_to I18n.t("views.buttons.delete"), admin_user_path(user), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+				</th>
+			</tr>
+		<% end %>
+  </table>
+
+  <%= paginate @users %>
+</div>
+

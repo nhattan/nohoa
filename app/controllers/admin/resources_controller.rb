@@ -2,17 +2,20 @@ class Admin::ResourcesController < Admin::BaseController
   check_authorization
   helper_method :model_name, :model
   before_filter :load_resources, only: [:index]
-  before_filter :load_resource, only: [:edit, :update, :destroy]
+  before_filter :load_resource, only: [:edit, :update, :destroy, :show]
   before_filter :initialize_resource, only: [:new]
+
+  def show
+  end
 
   def new
     respond_with(@resource)
   end
 
   def create
-    @resource.new(model_params)
+    @resource = model.new(model_params)
     if @resource.save
-      redirect_to redirect_after_create_path
+      redirect_to resource_show_path
     else
       render "new"
     end
@@ -25,7 +28,7 @@ class Admin::ResourcesController < Admin::BaseController
 
   def update
     if @resource.update_attributes(model_params)
-      redirect_to redirect_after_update_path
+      redirect_to resource_show_path
     else
       render "edit"
     end
@@ -33,7 +36,7 @@ class Admin::ResourcesController < Admin::BaseController
 
   def destroy
     @resource.destroy
-    redirect_to 
+    redirect_to resource_index_path
   end
 
   def model_name
@@ -81,15 +84,18 @@ class Admin::ResourcesController < Admin::BaseController
     send "new_admin_#{instance_name}_path"
   end
 
-  def redirect_after_create_path
-    resource_index_path
-  end
-
-  def redirect_after_update_path
-    resource_index_path
+  def resource_show_path
+    send "admin_#{instance_name}_path", @resource
   end
 
   def model_params
-    params.require(instance_name.to_sym).permit(model.permit_attributes)
+    permited_params = params.require(instance_name.to_sym).permit(model.permit_attributes)
+
+    # Check password required
+    if permited_params[:password].blank? && permited_params[:password_confirmation].blank?
+      permited_params.delete(:password)
+      permited_params.delete(:password_confirmation)
+    end
+    permited_params
   end
 end

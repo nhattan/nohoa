@@ -1,0 +1,31 @@
+<table class="table table-bordered">
+	<tr>
+		<th><%= User.human_attribute_name :email %></th>
+		<td><%= @user.email %></td>
+	</tr>
+	<tr>
+		<th colspan="2">
+			<%= link_to I18n.t("views.buttons.edit"), edit_admin_user_path(@user), class: "btn btn-primary" %>
+			<%= link_to I18n.t("views.buttons.delete"), admin_user_path(@user), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+		</th>
+	</tr>
+</table>
+
+<table class="table table-bordered">
+	<tr>
+		<th><%= User.human_attribute_name :sign_in_count %></th>
+		<td><%= @user.sign_in_count %></td>
+		<th><%= User.human_attribute_name :last_sign_in_at %></th>
+		<td><%= @user.last_sign_in_at %></td>
+	</tr>
+
+	<tr>
+		<th><%= User.human_attribute_name :last_sign_in_ip %></th>
+		<td><%= @user.last_sign_in_ip %></td>
+		<th><%= User.human_attribute_name :current_sign_in_ip %></th>
+		<td><%= @user.current_sign_in_ip %></td>
+	</tr>
+	<tr>
+		
+	</tr>
+</table>

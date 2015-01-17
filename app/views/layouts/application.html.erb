@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Store</title>
@@ -34,6 +35,11 @@
   </div>
 
   <div class="container">
+    <% if flash[:alert] %>
+      <div class="flash alert alert-warning">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
     <div class="row">
       <div class="span9"><%= yield %></div>
       <div class="span3">

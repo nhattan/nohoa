@@ -7,17 +7,22 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
 
   accepts_nested_attributes_for :providers
+  accepts_nested_attributes_for :user_roles
 
   def admin?
     roles.map(&:name).include?("admin")
   end
 
   def email_required?
-    false
+    !self.providers.any?
   end
 
   def password_required?
-    false
+    !self.providers.any? && new_record?
+  end
+
+  def build_user_roles
+    user_roles.first || user_roles.build
   end
 
   class << self
@@ -38,7 +43,7 @@ class User < ActiveRecord::Base
   	end
 
     def permit_attributes
-      [:email, :password, :password_confirmation]
+      [:email, :password, :password_confirmation, user_roles_attributes: [:role_id, :id]]
     end
   end
 end

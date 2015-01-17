@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    buttons:
+      new: New
+      edit: Edit
+      delete: Delete
+    messages:
+      delete: "Do you want to delete it?"
+    admin:
+      users:
+        user: "users"
