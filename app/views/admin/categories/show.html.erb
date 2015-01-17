@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+	<tr>
+		<th><%= Category.human_attribute_name :name %></th>
+	</tr>
+	<tr>
+		<th class="alert"><%= @category.name %></th>
+	</tr>
+	<tr>
+		<th colspan="2">
+			<%= link_to I18n.t("views.buttons.edit"), edit_admin_category_path(@category), class: "btn btn-primary" %>
+			<%= link_to I18n.t("views.buttons.delete"), admin_category_path(@category), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+		</th>
+	</tr>
+</table>

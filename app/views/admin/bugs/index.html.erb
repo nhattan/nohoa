@@ -1,0 +1,43 @@
+<%= render "search_form" %>
+
+<div class="panel panel-success">
+  <div class="panel-heading alert overflow-hidden">
+  	<span class="label label-warning">
+      <%= @bugs.total_count %> <%= model_name.pluralize %>
+    </span>
+  	
+  	<%= link_to I18n.t("views.buttons.new"), new_admin_bug_path, class: "btn btn-success right" %>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+  	<thead>
+  		<tr>
+  			<th><%= Bug.human_attribute_name :id %></th>
+        <th><%= Bug.human_attribute_name :category %></th>
+  			<th><%= Bug.human_attribute_name :content %></th>
+  			<th><%= Bug.human_attribute_name :created_at %></th>
+  		  <th><%= Bug.human_attribute_name :update_at %></th>
+        <th><%= Bug.human_attribute_name :user %></th>
+  			<th></th>
+  		</tr>
+  	</thead>
+
+    <% @bugs.each do |bug| %>
+			<tr>
+				<th><%= link_to bug.id, admin_bug_path(bug) %></th>
+        <th><%= bug.category.try(:name) %></th>
+				<th><%= link_to bug.content, admin_bug_path(bug) %></th>
+				<th><%= bug.created_at %></th>
+				<th><%= bug.updated_at %></th>
+        <th><%= bug.user.email %></th>
+				<th>
+					<%= link_to I18n.t("views.buttons.edit"), edit_admin_bug_path(bug), class: "btn btn-primary" %>
+					<%= link_to I18n.t("views.buttons.delete"), admin_bug_path(bug), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+				</th>
+			</tr>
+		<% end %>
+  </table>
+
+  <%= paginate @bugs %>
+</div>
+

@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+	<tr>
+		<th><%= Solution.human_attribute_name :content %></th>
+	</tr>
+	<tr>
+		<th class="alert"><%= markdown @solution.content %></th>
+	</tr>
+	<tr>
+		<th>
+			<%= link_to I18n.t("views.buttons.edit"), edit_admin_solution_path(@solution), class: "btn btn-primary" %>
+			<%= link_to I18n.t("views.buttons.delete"), admin_solution_path(@solution), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+		</th>
+	</tr>
+</table>

@@ -1,0 +1,25 @@
+<%= form_for [:admin, @resource] do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="fields">
+		<%= f.label :content %>
+		<%= f.text_area :content %>
+	</div>
+
+  <div class="fields">
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+
+	<div class="fields">
+		<%= f.submit (@resource.new_record? ? :Create : :Update), class: "btn btn-warning" %>
+	</div>
+<% end %>

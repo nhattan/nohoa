@@ -2,8 +2,9 @@ class Admin::ResourcesController < Admin::BaseController
   check_authorization
   helper_method :model_name, :model
   before_filter :load_resources, only: [:index]
-  before_filter :load_resource, only: [:edit, :update, :destroy, :show]
+  before_filter :load_resource, only: [:edit, :update, :destroy, :show, :create]
   before_filter :initialize_resource, only: [:new]
+  before_filter :assign_create_user, only: [:new, :create]
 
   def show
   end
@@ -13,7 +14,6 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def create
-    @resource = model.new(model_params)
     if @resource.save
       redirect_to resource_show_path
     else
@@ -59,8 +59,12 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def load_resource
-  	@resource = model.find(params[:id])
-  	instance_variable_set("@#{instance_name}", @resource)
+    if action_name.to_sym == :create
+      @resource = model.new(model_params)
+    else
+      @resource = model.find(params[:id])
+      instance_variable_set("@#{instance_name}", @resource)
+    end
   end
 
   def initialize_resource
@@ -86,6 +90,12 @@ class Admin::ResourcesController < Admin::BaseController
 
   def resource_show_path
     send "admin_#{instance_name}_path", @resource
+  end
+
+  def assign_create_user
+    if @resource.respond_to?(:require_user?) && @resource.require_user?
+      @resource.user = current_user
+    end
   end
 
   def model_params

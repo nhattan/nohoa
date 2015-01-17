@@ -48,6 +48,9 @@ gem "rails_config"
 gem 'ransack'
 gem 'kaminari'
 gem 'cancancan'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

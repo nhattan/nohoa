@@ -18,6 +18,9 @@ Flower::Application.routes.draw do
   namespace :admin do
     root "users#index"
     resources :users
+    resources :bugs
+    resources :solutions
+    resources :categories
   end
 
   # resources :users

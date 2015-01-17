@@ -2,11 +2,11 @@
 	<div class="container-fluid">
 		<ul class="nav nav-pills nav-justified">
 		  <li role="presentation" class="<%= 'active' if controller_name == "users" %>">
-		  <li role="presentation" class="<%= 'active' if controller_name == "users" %>">
 		  	<%= link_to "Users", admin_users_path %>
 		  </li>
-		  <li role="presentation"><a href="#">Profile</a></li>
-		  <li role="presentation"><a href="#">Messages</a></li>
+		  <li role="presentation" class="<%= 'active' if controller_name == "bugs" %>"><%= link_to "Bugs", admin_bugs_path %></li>
+		  <li role="presentation" class="<%= 'active' if controller_name == "solutions" %>"><%= link_to "Solutions", admin_solutions_path %></li>
+		  <li role="presentation" class="<%= 'active' if controller_name == "categories" %>"><%= link_to "Categories", admin_categories_path %></li>
 		</ul>
 	</div>
 </nav>

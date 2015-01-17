@@ -1,0 +1,10 @@
+<%= search_form_for [:admin, @search] do |f| %>
+  <table class="table">
+    <tr class="field">
+      <th><%= f.label :content_cont, Solution.human_attribute_name(:content) %></th>
+      <td><%= f.text_field :content_cont %></td>
+    </tr>
+
+    <tr class="actions"><th colspan="2"><%= f.submit "Search", class: "btn btn-warning" %></th></tr>
+  </table>
+<% end %>

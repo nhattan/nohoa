@@ -1,0 +1,43 @@
+<%= render "search_form" %>
+
+<div class="panel panel-success">
+  <div class="panel-heading alert overflow-hidden">
+  	<span class="label label-warning">
+      <%= @solutions.total_count %> <%= model_name.pluralize %>
+    </span>
+  	
+  	<%= link_to I18n.t("views.buttons.new"), new_admin_solution_path, class: "btn btn-success right" %>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+  	<thead>
+  		<tr>
+  			<th><%= Solution.human_attribute_name :id %></th>
+        <th><%= Solution.human_attribute_name :category %></th>
+  			<th><%= Solution.human_attribute_name :content %></th>
+  			<th><%= Solution.human_attribute_name :created_at %></th>
+  		  <th><%= Solution.human_attribute_name :update_at %></th>
+        <th><%= Solution.human_attribute_name :user %></th>
+  			<th></th>
+  		</tr>
+  	</thead>
+
+    <% @solutions.each do |solution| %>
+			<tr>
+				<th><%= link_to solution.id, admin_solution_path(solution) %></th>
+        <th><%= solution.category.try(:name) %></th>
+				<th><%= link_to solution.content, admin_solution_path(solution) %></th>
+				<th><%= solution.created_at %></th>
+				<th><%= solution.updated_at %></th>
+        <th><%= solution.user.email %></th>
+				<th>
+					<%= link_to I18n.t("views.buttons.edit"), edit_admin_solution_path(solution), class: "btn btn-primary" %>
+					<%= link_to I18n.t("views.buttons.delete"), admin_solution_path(solution), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+				</th>
+			</tr>
+		<% end %>
+  </table>
+
+  <%= paginate @solutions %>
+</div>
+

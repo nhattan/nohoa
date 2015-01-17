@@ -1,0 +1,39 @@
+<%= render "search_form" %>
+
+<div class="panel panel-success">
+  <div class="panel-heading alert overflow-hidden">
+  	<span class="label label-warning">
+      <%= @categories.total_count %> <%= model_name.pluralize %>
+    </span>
+  	
+  	<%= link_to I18n.t("views.buttons.new"), new_admin_category_path, class: "btn btn-success right" %>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover">
+  	<thead>
+  		<tr>
+  			<th><%= Category.human_attribute_name :id %></th>
+  			<th><%= Category.human_attribute_name :name %></th>
+  			<th><%= Category.human_attribute_name :created_at %></th>
+  		  <th><%= Category.human_attribute_name :update_at %></th>
+  			<th></th>
+  		</tr>
+  	</thead>
+
+    <% @categories.each do |category| %>
+			<tr>
+				<th><%= link_to category.id, admin_category_path(category) %></th>
+				<th><%= link_to category.name, admin_category_path(category) %></th>
+				<th><%= category.created_at %></th>
+				<th><%= category.updated_at %></th>
+				<th>
+					<%= link_to I18n.t("views.buttons.edit"), edit_admin_category_path(category), class: "btn btn-primary" %>
+					<%= link_to I18n.t("views.buttons.delete"), admin_category_path(category), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+				</th>
+			</tr>
+		<% end %>
+  </table>
+
+  <%= paginate @categories %>
+</div>
+
