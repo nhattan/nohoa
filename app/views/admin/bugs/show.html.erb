@@ -1,14 +1,6 @@
-<table class="table table-bordered">
-	<tr>
-		<th><%= Bug.human_attribute_name :content %></th>
-	</tr>
-	<tr>
-		<th class="alert"><%= markdown @bug.content %></th>
-	</tr>
-	<tr>
-		<th colspan="2">
-			<%= link_to I18n.t("views.buttons.edit"), edit_admin_bug_path(@bug), class: "btn btn-primary" %>
-			<%= link_to I18n.t("views.buttons.delete"), admin_bug_path(@bug), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
-		</th>
-	</tr>
-</table>
+<h2 class="alert"><%= "#" + @bug.id.to_s %></h2>
+<div class="alert alert-success"><%= markdown @bug.content %></div>
+<div>
+	<%= link_to I18n.t("views.buttons.edit"), edit_admin_bug_path(@bug), class: "btn btn-primary" %>
+	<%= link_to I18n.t("views.buttons.delete"), admin_bug_path(@bug), class: "btn btn-warning", method: :delete, confirm: I18n.t("views.messages.delete") %>
+</div>

@@ -26,7 +26,7 @@
 			<tr>
 				<th><%= link_to bug.id, admin_bug_path(bug) %></th>
         <th><%= bug.category.try(:name) %></th>
-				<th><%= link_to bug.content, admin_bug_path(bug) %></th>
+				<th><%= link_to markdown(truncate(bug.content, length: 100)), admin_bug_path(bug) %></th>
 				<th><%= bug.created_at %></th>
 				<th><%= bug.updated_at %></th>
         <th><%= bug.user.email %></th>

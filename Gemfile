@@ -51,6 +51,7 @@ gem 'cancancan'
 gem 'redcarpet'
 gem 'albino'
 gem 'nokogiri'
+gem 'pygments.rb'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -26,7 +26,7 @@
 			<tr>
 				<th><%= link_to solution.id, admin_solution_path(solution) %></th>
         <th><%= solution.category.try(:name) %></th>
-				<th><%= link_to solution.content, admin_solution_path(solution) %></th>
+				<th><%= link_to markdown(truncate(solution.content, length: 100)), admin_solution_path(solution) %></th>
 				<th><%= solution.created_at %></th>
 				<th><%= solution.updated_at %></th>
         <th><%= solution.user.email %></th>
