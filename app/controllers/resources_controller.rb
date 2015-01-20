@@ -1,7 +1,7 @@
 class ResourcesController < BaseController
   helper_method :model_name, :model
   before_filter :load_resources, only: [:index]
-  before_filter :load_resource, only: [:edit, :update, :destroy]
+  before_filter :load_resource, only: [:edit, :update, :destroy, :show]
   before_filter :initialize_resource, only: [:new]
 
   def model_name

@@ -15,6 +15,9 @@ Flower::Application.routes.draw do
 
   root "homes#index"
 
+  resources :searchs, only: [:index]
+  resources :solutions, only: [:show]
+
   namespace :admin do
     root "users#index"
     resources :users

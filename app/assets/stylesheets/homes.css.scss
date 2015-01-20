@@ -1,3 +1,14 @@
 // Place all the styles related to the Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search-form-wrapper {
+	text-align: center;
+	form {
+		margin-top: 18%;
+		input {
+			width: 40%;
+			height: 31px;
+			font-size: 17px;
+		}
+	}
+}

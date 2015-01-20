@@ -1,0 +1,7 @@
+<%= render "shares/search_form" %>
+
+<% @solutions.each do |solution| %>
+	<%= render "solution", solution: solution %>
+<% end %>
+
+<%= paginate @solutions %>
