@@ -17,6 +17,7 @@ Flower::Application.routes.draw do
 
   resources :searchs, only: [:index]
   resources :solutions, only: [:show]
+  resources :bugs, only: [:show]
 
   namespace :admin do
     root "users#index"
@@ -74,7 +75,7 @@ Flower::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

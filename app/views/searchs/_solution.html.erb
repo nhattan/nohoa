@@ -1,5 +1,5 @@
-<a href="<%= solution_path(solution) %>">
-	<div class="solution#<%= solution.id %> alert alert-info">
-		<%= markdown solution.content %>
-	</div>
+<a href="<%= solution_path(solution.id) %>">
+  <div class="solution#<%= solution.id %> alert alert-info">
+    <%= markdown solution.content %>
+  </div>
 </a>

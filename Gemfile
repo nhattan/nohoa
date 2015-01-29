@@ -52,6 +52,8 @@ gem 'redcarpet'
 gem 'albino'
 gem 'nokogiri'
 gem 'pygments.rb'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

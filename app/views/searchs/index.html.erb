@@ -1,7 +1,9 @@
 <%= render "shares/search_form" %>
 
-<% @solutions.each do |solution| %>
-	<%= render "solution", solution: solution %>
+<% @bugs.each do |bug| %>
+  <%= render "bug", bug: bug %>
 <% end %>
 
-<%= paginate @solutions %>
+<% @solutions.each do |solution| %>
+  <%= render "solution", solution: solution %>
+<% end %>
