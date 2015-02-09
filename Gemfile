@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.1.4"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
@@ -33,7 +34,12 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'pry'
+  gem "pry-rails"
+  gem "pry-byebug"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 gem 'devise', '3.0.0'
