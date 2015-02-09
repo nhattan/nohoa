@@ -47,6 +47,19 @@ GEM
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
+    elasticsearch (1.0.6)
+      elasticsearch-api (= 1.0.6)
+      elasticsearch-transport (= 1.0.6)
+    elasticsearch-api (1.0.6)
+      multi_json
+    elasticsearch-model (0.1.6)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.6)
+    elasticsearch-transport (1.0.6)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.2.2)
     faraday (0.9.0)
@@ -190,6 +203,8 @@ DEPENDENCIES
   cancancan
   coffee-rails (~> 4.0.0)
   devise (= 3.0.0)
+  elasticsearch-model
+  elasticsearch-rails
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
